@@ -34,17 +34,17 @@
         mode: a+x
 
 
-- name: Configure storage node.
-  hosts: storage
-  gather_facts: false
-  become: true
-
-  vars_files:
-    - config.yml
-
-  tasks:
-    - name: Set up storage.
-      include_tasks: tasks/storage/{{ storage_type }}.yml
+#- name: Configure storage node.
+#  hosts: storage
+#  gather_facts: false
+#  become: true
+#
+#  vars_files:
+#    - config.yml
+#
+#  tasks:
+#    - name: Set up storage.
+#      include_tasks: tasks/storage/{{ storage_type }}.yml
 
 
 - name: Configure the control plane.
@@ -114,14 +114,14 @@
   import_playbook: tasks/kubernetes/helm.yml
   tags: ['helm']
 
-- name: Set up NFS PVCs.
-  import_playbook: tasks/kubernetes/nfs.yml
-  tags: ['nfs']
+#- name: Set up NFS PVCs.
+#  import_playbook: tasks/kubernetes/nfs.yml
+#  tags: ['nfs']
 
-- name: Set up Prometheus.
-  import_playbook: tasks/kubernetes/prometheus.yml
-  tags: ['prometheus']
+#- name: Set up Prometheus.
+#  import_playbook: tasks/kubernetes/prometheus.yml
+#  tags: ['prometheus']
 
-- name: Set up Drupal.
-  import_playbook: tasks/kubernetes/drupal.yml
-  tags: ['drupal']
+#- name: Set up Drupal.
+#  import_playbook: tasks/kubernetes/drupal.yml
+#  tags: ['drupal']
